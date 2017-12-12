@@ -5,7 +5,6 @@ import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.Page;
 import org.springframework.social.facebook.api.PagedList;
-import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +17,7 @@ public class FacebookController {
 
     @Autowired
     public FacebookController(Facebook facebook, ConnectionRepository connectionRepository) {
-        this.facebook = new FacebookTemplate("EAACEdEose0cBAGGSkhKHzfDKLZAwlkpGkFO2Qn6thyCZCAdKPV4cVTgtG62clSwWW7uvdR1DlKS1jQ5lEMr72keMkupwek9PQtGmgXz2MbgdOdrqqbGg3w4AQjVoRRspjylpOC6EpoWrEfh4kZCrxlhR7ZCYnm4c1ws17fDCGV9AjCNlx8G736aG28qDohK6NXTXzjZBnxQZDZD");
+        this.facebook = facebook;
         this.connectionRepository = connectionRepository;
     }
 
@@ -40,4 +39,5 @@ public class FacebookController {
         
         return "resultado";
     }
+    
 }

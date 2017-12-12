@@ -10,4 +10,9 @@ public class PrincipalController {
     public String paginaInicial() {
         return "redirect:/connect/facebook";
     }
+	
+	@RequestMapping("/privacidade")
+    public String privacidade() {
+        return "privacidade";
+    }
 }
