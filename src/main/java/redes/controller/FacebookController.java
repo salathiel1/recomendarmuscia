@@ -39,7 +39,10 @@ public class FacebookController {
         model.addAttribute("mpm", minhasPaginasMusicas);
         PagedList<Reference> amigos = facebook.friendOperations().getFriends();
         Page paginaRecomendada = recomendarMusica(minhasPaginasMusicas, amigos);
-        model.addAttribute("pr", paginaRecomendada);
+        if(paginaRecomendada != null)
+        	model.addAttribute("pr", paginaRecomendada);
+        else
+        	model.addAttribute("pr", new Page());
         
         return "resultado";
     }
@@ -53,9 +56,12 @@ public class FacebookController {
     private Page recomendarMusica(PagedList<Page> uPagMus, PagedList<Reference> amigos){
     	PagedList<Page> acpms = musicasAmigoComum(uPagMus, amigos);
     	ArrayList<Page> paginasRec = new ArrayList<>();
-    	for(Page acp : acpms)
-    		if(!uPagMus.contains(acp)) paginasRec.add(acp);
-    	return paginasRec.get(randInt(0, paginasRec.size()-1));
+    	if(acpms != null && acpms.size() > 0){
+    		for(Page acp : acpms)
+    			if(!uPagMus.contains(acp)) paginasRec.add(acp);
+    		return paginasRec.get(randInt(0, paginasRec.size()-1));
+    	}
+    	return null;
     }
     
     private PagedList<Page> musicasAmigoComum(PagedList<Page> uPagMus, PagedList<Reference> amigos){
