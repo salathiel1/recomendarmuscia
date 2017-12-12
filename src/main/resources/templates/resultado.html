@@ -4,15 +4,22 @@
 	</head>
 	<body>
 		
-		<!-- Loop:
-		<div th:each="page:${pm}">
-			<p th:text="${page.name} + ' (' + ${page.id} ">message text</p>
-		</div> -->
-		
-		Amigos:
-		<div th:each="id:${ids}">
-			<p th:text="${id}">message text</p>
+		Suas paginas de musicas:
+		<div th:each="page:${mpm}">
+			<p th:text="${page.name}">.</p>
 		</div>
+		
+		<h4>
+			Pagina recomendada:
+			<a th:href="@{'http://www.facebook.com/' + ${pr.id}}"><p th:text="${pr.name}">.</p></a>
+		</h4>
+		
+		<form action="/postar">
+		<h4>Poste na sua linha do tempo</h4>
+		<p> O site https://recmus.herokuapp.com me recomendou a pagina de musica: <p th:text="${pr.name}">.</p> </p>
+		<input type="hidden" th:name="nomepagina" th:value="${pr.name}"/>
+  		<input type="submit" value="Postar"/>
+		</form>
 
 	</body>
 </html>
