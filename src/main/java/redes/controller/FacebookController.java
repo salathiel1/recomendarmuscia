@@ -23,7 +23,7 @@ public class FacebookController {
 
     @Autowired
     public FacebookController(Facebook facebook, ConnectionRepository connectionRepository) {
-        this.facebook = new FacebookTemplate("EAACEdEose0cBAEsZBb7RSrsOIn6gzsNEfcZAPUOaVSLTG9pOtZAv4SJZAXsUFZA0poyo0s3ZCZCIld92Y1dnh1eYnKShcecMQldH6KIXI8btfYZA6G6nohWcPGwbxZAjLO4IY4JZC4H8yYBkadheYcQ1OfHtf9btfNCOwk1q5sr9fnVOikpKQ4H1vD2bzksmiNJoIZD");
+        this.facebook = facebook;//new FacebookTemplate("EAACEdEose0cBAEsZBb7RSrsOIn6gzsNEfcZAPUOaVSLTG9pOtZAv4SJZAXsUFZA0poyo0s3ZCZCIld92Y1dnh1eYnKShcecMQldH6KIXI8btfYZA6G6nohWcPGwbxZAjLO4IY4JZC4H8yYBkadheYcQ1OfHtf9btfNCOwk1q5sr9fnVOikpKQ4H1vD2bzksmiNJoIZD");
         this.connectionRepository = connectionRepository;
     }
 
