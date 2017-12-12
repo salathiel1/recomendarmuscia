@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>Hello Facebook</title>
+	</head>
+	<body>
+		
+		<!-- Loop:
+		<div th:each="page:${pm}">
+			<p th:text="${page.name} + ' (' + ${page.id} ">message text</p>
+		</div> -->
+		
+		Amigos:
+		<div th:each="id:${ids}">
+			<p th:text="${id}">message text</p>
+		</div>
+
+	</body>
+</html>
