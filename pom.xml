@@ -6,7 +6,6 @@
 	<groupId>redes</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 
 	<name>RecomendacaoMusica3</name>
 	<description>Trabalho redes sociais</description>
