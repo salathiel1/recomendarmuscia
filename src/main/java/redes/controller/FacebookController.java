@@ -61,13 +61,6 @@ public class FacebookController {
     	return "post";
     }
     
-    @GetMapping(path = "/compartilhar/{nomepagina}")
-    public ModelAndView paginaPost(@PathVariable String nomepagina) {
-    	ModelAndView model = new ModelAndView("compartilhar");
-		model.addObject("nomepagina", nomepagina);
-		return model;
-    }
-    
     private Page recomendarMusica(PagedList<Page> uPagMus, PagedList<Reference> amigos){
     	PagedList<Page> acpms = musicasAmigoComum(uPagMus, amigos);
     	ArrayList<Page> paginasRec = new ArrayList<>();
