@@ -3,11 +3,13 @@
 		<title>Recomendador Musica</title>
 		<meta property="fb:app_id" content="176165712967012" />
 		<meta property="og:url" th:attr="content=${'https://recmus.herokuapp.com/compartilhar/'+ nomepagina}" />
-		<meta property="og:title" content="Recomendador de paginas de musicas" />
+		<meta property="og:title" th:attr="content=${'Pagina de musica recomendada: ' + nomepagina}" />
 		<meta property="og:description" th:attr="content=${'O site https://recmus.herokuapp.com me recomendou a pagina de musica: ' + nomepagina}" />
 		<meta property="og:image" content="https://i.imgur.com/VumUITz.jpg" />
+		<meta property="og:type" content="website" />
 	</head>
 	<body>		
-		<p> O site https://recmus.herokuapp.com me recomendou a pagina de musica: <p th:text="${nomepagina}">.</p> </p>
+		<p> Pagina de musica recomendada: <p th:text="${nomepagina}">.</p> </p>
+		<p> <a href="https://recmus.herokuapp.com/"> Clique aqui para uma nova recomendação !</a> </p>
 	</body>
 </html>

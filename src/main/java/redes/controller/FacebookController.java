@@ -55,7 +55,7 @@ public class FacebookController {
     	//facebook.feedOperations().post("", "https://recmus.herokuapp.com/compartilhar/"+nomepagina);
     	facebook.feedOperations().post(new PostData("me").link("https://recmus.herokuapp.com/compartilhar/"+nomepagina, 
     			"https://i.imgur.com/VumUITz.jpg", 
-    			"Recomendador de paginas de musicas", 
+    			"Pagina de musica recomendada: " + nomepagina, 
     			"Projeto da disciplina de redes sociais", 
     			"O site https://recmus.herokuapp.com me recomendou a pagina de musica: " + nomepagina));
     	return "post";
