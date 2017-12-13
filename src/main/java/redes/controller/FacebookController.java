@@ -7,13 +7,16 @@ import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.Page;
 import org.springframework.social.facebook.api.PagedList;
+import org.springframework.social.facebook.api.PostData;
 import org.springframework.social.facebook.api.Reference;
 import org.springframework.social.facebook.api.User;
 import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class FacebookController {
@@ -23,7 +26,7 @@ public class FacebookController {
 
     @Autowired
     public FacebookController(Facebook facebook, ConnectionRepository connectionRepository) {
-        this.facebook = facebook;//new FacebookTemplate("EAACEdEose0cBAEsZBb7RSrsOIn6gzsNEfcZAPUOaVSLTG9pOtZAv4SJZAXsUFZA0poyo0s3ZCZCIld92Y1dnh1eYnKShcecMQldH6KIXI8btfYZA6G6nohWcPGwbxZAjLO4IY4JZC4H8yYBkadheYcQ1OfHtf9btfNCOwk1q5sr9fnVOikpKQ4H1vD2bzksmiNJoIZD");
+        this.facebook = new FacebookTemplate("EAACEdEose0cBAEsZBb7RSrsOIn6gzsNEfcZAPUOaVSLTG9pOtZAv4SJZAXsUFZA0poyo0s3ZCZCIld92Y1dnh1eYnKShcecMQldH6KIXI8btfYZA6G6nohWcPGwbxZAjLO4IY4JZC4H8yYBkadheYcQ1OfHtf9btfNCOwk1q5sr9fnVOikpKQ4H1vD2bzksmiNJoIZD");
         this.connectionRepository = connectionRepository;
     }
 
@@ -48,9 +51,16 @@ public class FacebookController {
     }
     
     @GetMapping(path = "/postar")
-    public String helloFacebook(@RequestParam(value="nomepagina", required=true) String nomepagina) {
-    	facebook.feedOperations().updateStatus("[TESTE] O site https://recmus.herokuapp.com me recomendou a pagina de musica: " + nomepagina);
+    public String postar(@RequestParam(value="nomepagina", required=true) String nomepagina) {
+    	facebook.feedOperations().post("", "https://recmus.herokuapp.com/compartilhar/"+nomepagina);
     	return "post";
+    }
+    
+    @GetMapping(path = "/compartilhar/{nomepagina}")
+    public ModelAndView paginaPost(@PathVariable String nomepagina) {
+    	ModelAndView model = new ModelAndView("compartilhar");
+		model.addObject("nomepagina", nomepagina);
+		return model;
     }
     
     private Page recomendarMusica(PagedList<Page> uPagMus, PagedList<Reference> amigos){

@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<title>Recomendador Musica</title>
+		<meta property="og:url" content="https://recmus.herokuapp.com" />
+		<meta property="og:title" content="Recomendador de paginas de musicas" />
+		<meta property="og:description" th:attr="content=${'O site https://recmus.herokuapp.com me recomendou a pagina de musica: ' + nomepagina}" />
+		<meta property="og:image" content="https://i.imgur.com/VumUITz.jpg" />
+	</head>
+	<body>		
+		<p> O site https://recmus.herokuapp.com me recomendou a pagina de musica: <p th:text="${nomepagina}">.</p> </p>
+	</body>
+</html>
