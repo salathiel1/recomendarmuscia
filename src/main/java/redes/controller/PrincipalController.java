@@ -19,7 +19,7 @@ public class PrincipalController {
         return "privacidade";
     }
 	
-    @GetMapping(path = "/p#{nomepagina}")
+    @GetMapping(path = "/p/{nomepagina}")
     public ModelAndView paginaPost(@PathVariable String nomepagina) {
     	ModelAndView model = new ModelAndView("compartilhar");
 		model.addObject("nomepagina", nomepagina);
