@@ -53,7 +53,7 @@ public class FacebookController {
     @GetMapping(path = "/postar")
     public String postar(@RequestParam(value="nomepagina", required=true) String nomepagina) {
     	//facebook.feedOperations().post("", "https://recmus.herokuapp.com/compartilhar/"+nomepagina);
-    	facebook.feedOperations().post(new PostData("me").link("https://recmus.herokuapp.com/p#"+nomepagina, 
+    	facebook.feedOperations().post(new PostData("me").link("https://recmus.herokuapp.com/compartilhar?nomepagina="+nomepagina, 
     			"https://i.imgur.com/VumUITz.jpg", 
     			"Recomendador de paginas de musicas", 
     			"Projeto da disciplina de redes sociais", 
