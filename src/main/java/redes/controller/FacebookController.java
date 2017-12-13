@@ -53,12 +53,19 @@ public class FacebookController {
     @GetMapping(path = "/postar")
     public String postar(@RequestParam(value="nomepagina", required=true) String nomepagina) {
     	//facebook.feedOperations().post("", "https://recmus.herokuapp.com/compartilhar/"+nomepagina);
-    	facebook.feedOperations().post(new PostData("me").link("https://recmus.herokuapp.com/compartilhar?nomepagina="+nomepagina, 
+    	facebook.feedOperations().post(new PostData("me").link("https://recmus.herokuapp.com/compartilhar/"+nomepagina, 
     			"https://i.imgur.com/VumUITz.jpg", 
     			"Recomendador de paginas de musicas", 
     			"Projeto da disciplina de redes sociais", 
     			"O site https://recmus.herokuapp.com me recomendou a pagina de musica: " + nomepagina));
     	return "post";
+    }
+    
+    @GetMapping(path = "/compartilhar/{nomepagina}")
+    public ModelAndView paginaPost(@PathVariable String nomepagina) {
+    	ModelAndView model = new ModelAndView("compartilhar");
+		model.addObject("nomepagina", nomepagina);
+		return model;
     }
     
     private Page recomendarMusica(PagedList<Page> uPagMus, PagedList<Reference> amigos){
