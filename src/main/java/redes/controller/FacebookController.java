@@ -26,7 +26,7 @@ public class FacebookController {
 
     @Autowired
     public FacebookController(Facebook facebook, ConnectionRepository connectionRepository) {
-        this.facebook = new FacebookTemplate("EAACEdEose0cBAMJ6ZBNFeiiJD2GlC3vUyZCyC16wdPqxVQtZBOYjt0Kt9iVTJSPInatE1CXDP1YNZCTOY0aYHINIiFIFT9HnoALruuZBFclGGwqGE2Has7NIIpTW1XyD3zConwZATSRAxCQaxLkVHrNQ6wIpMHZCF1RwFS94QGOgSvg9XcfwIIFlk5DNVLqSZBMZAtVzuNmvZBNwZDZD");
+        this.facebook = facebook;//new FacebookTemplate("EAACEdEose0cBAMJ6ZBNFeiiJD2GlC3vUyZCyC16wdPqxVQtZBOYjt0Kt9iVTJSPInatE1CXDP1YNZCTOY0aYHINIiFIFT9HnoALruuZBFclGGwqGE2Has7NIIpTW1XyD3zConwZATSRAxCQaxLkVHrNQ6wIpMHZCF1RwFS94QGOgSvg9XcfwIIFlk5DNVLqSZBMZAtVzuNmvZBNwZDZD");
         this.connectionRepository = connectionRepository;
     }
 
@@ -53,7 +53,7 @@ public class FacebookController {
     @GetMapping(path = "/postar")
     public String postar(@RequestParam(value="nomepagina", required=true) String nomepagina) {
     	//facebook.feedOperations().post("", "https://recmus.herokuapp.com/compartilhar/"+nomepagina);
-    	facebook.feedOperations().post(new PostData("me").link("https://recmus.herokuapp.com/compartilhar/"+nomepagina, 
+    	facebook.feedOperations().post(new PostData("me").link("https://recmus.herokuapp.com/p#"+nomepagina, 
     			"https://i.imgur.com/VumUITz.jpg", 
     			"Recomendador de paginas de musicas", 
     			"Projeto da disciplina de redes sociais", 
