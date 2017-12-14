@@ -6,11 +6,11 @@
 		<h3>Conexão com Facebook</h3>
 
 		<form action="/connect/facebook" method="POST">
-			<input type="hidden" name="scope" value="user_posts" />
+			<input type="hidden" name="scope" value="public_profile,user_friends,publish_actions,user_likes" />
 			<div class="formInfo">
 				<p>Faça a conexão com o Facebook</p>
 			</div>
-			<p><button type="submit">Conectar com Facebook</button></p>
+			<p><button scope="user_likes" type="submit">Conectar com Facebook</button></p>
 		</form>
 		
 		<a href="/privacidade">Política de Privacidade</a>
