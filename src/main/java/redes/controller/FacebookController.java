@@ -85,7 +85,8 @@ public class FacebookController {
         	int qtComunMelhor = -1;
         	for(int i = 0; i < amigos.size(); i++){
         		String aid = amigos.get(i).getId();
-        		PagedList<Page> apms = facebook.likeOperations().getMusic(aid);
+        		PagedList<Page> apms = facebook.fetchConnections(aid, "music", Page.class, PAGE_FIELDS);
+        		//PagedList<Page> apms = facebook.likeOperations().getMusic(aid);
         		int qtMusComun = qtdMusicasComum(uPagMus, apms);
         		if(qtMusComun != apms.size() && qtMusComun >= qtComunMelhor){ 
         			if(qtMusComun == qtComunMelhor){
